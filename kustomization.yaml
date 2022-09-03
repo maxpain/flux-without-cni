@@ -86,7 +86,7 @@ patches:
 
       - op: add
         path: /spec/template/spec/containers/0/args/-
-        value: --events-addr=127.0.0.1:45423
+        value: --events-addr=http://127.0.0.1:45423
 
 patchesStrategicMerge:
   - |-

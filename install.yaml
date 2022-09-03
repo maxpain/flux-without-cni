@@ -7484,7 +7484,7 @@ spec:
         - --enable-leader-election
         - --health-addr=127.0.0.1:45221
         - --metrics-addr=127.0.0.1:45222
-        - --events-addr=127.0.0.1:45423
+        - --events-addr=http://127.0.0.1:45423
         env:
         - name: RUNTIME_NAMESPACE
           valueFrom:
@@ -7554,7 +7554,7 @@ spec:
         - --enable-leader-election
         - --health-addr=127.0.0.1:45321
         - --metrics-addr=127.0.0.1:45322
-        - --events-addr=127.0.0.1:45423
+        - --events-addr=http://127.0.0.1:45423
         env:
         - name: RUNTIME_NAMESPACE
           valueFrom:
@@ -7624,7 +7624,7 @@ spec:
         - --health-addr=127.0.0.1:45421
         - --metrics-addr=127.0.0.1:45422
         - --receiverAddr=127.0.0.1:45423
-        - --events-addr=127.0.0.1:45423
+        - --events-addr=http://127.0.0.1:45423
         env:
         - name: RUNTIME_NAMESPACE
           valueFrom:
@@ -7698,7 +7698,7 @@ spec:
         - --metrics-addr=127.0.0.1:45122
         - --storage-addr=127.0.0.1:45123
         - --storage-adv-addr=127.0.0.1:45123
-        - --events-addr=127.0.0.1:45423
+        - --events-addr=http://127.0.0.1:45423
         env:
         - name: RUNTIME_NAMESPACE
           valueFrom:
