@@ -7456,6 +7456,8 @@ spec:
   selector:
     matchLabels:
       app: helm-controller
+  strategy:
+    type: Recreate
   template:
     metadata:
       annotations:
@@ -7523,6 +7525,8 @@ spec:
   selector:
     matchLabels:
       app: kustomize-controller
+  strategy:
+    type: Recreate
   template:
     metadata:
       annotations:

@@ -51,6 +51,11 @@ patches:
       labelSelector: app.kubernetes.io/part-of=flux
     patch: |-
       - op: replace
+        path: /spec/strategy
+        value:
+          type: Recreate
+
+      - op: replace
         path: /spec/template/spec/hostNetwork
         value: true
 
