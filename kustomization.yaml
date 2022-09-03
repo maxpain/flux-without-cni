@@ -48,6 +48,22 @@ patches:
 
   - target:
       kind: Deployment
+      name: notification-controller
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --health-addr=127.0.0.1:45421
+
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --metrics-addr=127.0.0.1:45422
+
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --receiverAddr=127.0.0.1:45423
+
+  - target:
+      kind: Deployment
       labelSelector: app.kubernetes.io/part-of=flux
     patch: |-
       - op: replace
@@ -68,13 +84,11 @@ patches:
       - op: remove
         path: /spec/template/spec/containers/0/readinessProbe
 
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --events-addr=127.0.0.1:45423
+
 patchesStrategicMerge:
-  - |-
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: notification-controller
-    $patch: delete
   - |-
     apiVersion: apps/v1
     kind: Deployment
@@ -107,12 +121,6 @@ patchesStrategicMerge:
       name: webhook-receiver
     $patch: delete
 
-  - |-
-    apiVersion: v1
-    kind: ServiceAccount
-    metadata:
-      name: notification-controller
-    $patch: delete
   - |-
     apiVersion: v1
     kind: ServiceAccount
