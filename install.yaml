@@ -7624,7 +7624,6 @@ spec:
         - --health-addr=127.0.0.1:45421
         - --metrics-addr=127.0.0.1:45422
         - --receiverAddr=127.0.0.1:45423
-        - --events-addr=http://127.0.0.1:45423
         env:
         - name: RUNTIME_NAMESPACE
           valueFrom:

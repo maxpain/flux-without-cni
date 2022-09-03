@@ -22,6 +22,10 @@ patches:
         path: /spec/template/spec/containers/0/args/-
         value: --storage-adv-addr=127.0.0.1:45123
 
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --events-addr=http://127.0.0.1:45423
+
   - target:
       kind: Deployment
       name: helm-controller
@@ -34,6 +38,10 @@ patches:
         path: /spec/template/spec/containers/0/args/-
         value: --metrics-addr=127.0.0.1:45222
 
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --events-addr=http://127.0.0.1:45423
+
   - target:
       kind: Deployment
       name: kustomize-controller
@@ -45,6 +53,10 @@ patches:
       - op: add
         path: /spec/template/spec/containers/0/args/-
         value: --metrics-addr=127.0.0.1:45322
+
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --events-addr=http://127.0.0.1:45423
 
   - target:
       kind: Deployment
@@ -83,10 +95,6 @@ patches:
 
       - op: remove
         path: /spec/template/spec/containers/0/readinessProbe
-
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --events-addr=http://127.0.0.1:45423
 
 patchesStrategicMerge:
   - |-
