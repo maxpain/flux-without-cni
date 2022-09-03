@@ -96,6 +96,23 @@ patches:
       - op: remove
         path: /spec/template/spec/containers/0/readinessProbe
 
+      - op: add
+        path: /spec/template/spec/tolerations
+        value:
+          - key: node.kubernetes.io/not-ready
+
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: KUBERNETES_SERVICE_HOST
+          value: 127.0.0.1
+
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: KUBERNETES_SERVICE_PORT
+          value: 6443
+
 patchesStrategicMerge:
   - |-
     apiVersion: apps/v1

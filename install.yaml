@@ -7490,6 +7490,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: KUBERNETES_SERVICE_HOST
+          value: 127.0.0.1
+        - name: KUBERNETES_SERVICE_PORT
+          value: 6443
         image: ghcr.io/fluxcd/helm-controller:v0.23.1
         imagePullPolicy: IfNotPresent
         name: manager
@@ -7517,6 +7521,8 @@ spec:
         fsGroup: 1337
       serviceAccountName: helm-controller
       terminationGracePeriodSeconds: 600
+      tolerations:
+      - key: node.kubernetes.io/not-ready
       volumes:
       - emptyDir: {}
         name: temp
@@ -7560,6 +7566,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: KUBERNETES_SERVICE_HOST
+          value: 127.0.0.1
+        - name: KUBERNETES_SERVICE_PORT
+          value: 6443
         image: ghcr.io/fluxcd/kustomize-controller:v0.27.1
         imagePullPolicy: IfNotPresent
         name: manager
@@ -7587,6 +7597,8 @@ spec:
         fsGroup: 1337
       serviceAccountName: kustomize-controller
       terminationGracePeriodSeconds: 60
+      tolerations:
+      - key: node.kubernetes.io/not-ready
       volumes:
       - emptyDir: {}
         name: temp
@@ -7629,6 +7641,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: KUBERNETES_SERVICE_HOST
+          value: 127.0.0.1
+        - name: KUBERNETES_SERVICE_PORT
+          value: 6443
         image: fluxcd/notification-controller:v0.25.2
         imagePullPolicy: IfNotPresent
         name: manager
@@ -7656,6 +7672,8 @@ spec:
         fsGroup: 1337
       serviceAccountName: notification-controller
       terminationGracePeriodSeconds: 10
+      tolerations:
+      - key: node.kubernetes.io/not-ready
       volumes:
       - emptyDir: {}
         name: temp
@@ -7703,6 +7721,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: KUBERNETES_SERVICE_HOST
+          value: 127.0.0.1
+        - name: KUBERNETES_SERVICE_PORT
+          value: 6443
         image: ghcr.io/fluxcd/source-controller:v0.28.0
         imagePullPolicy: IfNotPresent
         name: manager
@@ -7732,6 +7754,8 @@ spec:
         fsGroup: 1337
       serviceAccountName: source-controller
       terminationGracePeriodSeconds: 10
+      tolerations:
+      - key: node.kubernetes.io/not-ready
       volumes:
       - emptyDir: {}
         name: data
