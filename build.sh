@@ -1,0 +1,1 @@
+kustomize build . > install.yaml

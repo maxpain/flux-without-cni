@@ -1,5 +1,5 @@
 resources:
-  - github.com/fluxcd/flux2/manifests/install?ref=v0.33.0
+  - github.com/fluxcd/flux2/manifests/install?ref=v2.0.0-rc.5
 
 patches:
   - target:
