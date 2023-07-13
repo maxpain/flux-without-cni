@@ -104,6 +104,11 @@ patches:
         - operator: Exists
 
     - op: add
+      path: /spec/template/spec/nodeSelector
+      value:
+        node-role.kubernetes.io/control-plane: ""
+
+    - op: add
       path: /spec/template/spec/containers/0/env/-
       value:
         name: KUBERNETES_SERVICE_HOST

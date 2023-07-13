@@ -8730,6 +8730,8 @@ spec:
         - mountPath: /tmp
           name: temp
       hostNetwork: true
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: ""
       priorityClassName: system-cluster-critical
       securityContext:
         fsGroup: 1337
@@ -8808,6 +8810,8 @@ spec:
         - mountPath: /tmp
           name: temp
       hostNetwork: true
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: ""
       priorityClassName: system-cluster-critical
       securityContext:
         fsGroup: 1337
@@ -8885,6 +8889,8 @@ spec:
         - mountPath: /tmp
           name: temp
       hostNetwork: true
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: ""
       securityContext:
         fsGroup: 1337
       serviceAccountName: notification-controller
@@ -8970,6 +8976,8 @@ spec:
         - mountPath: /tmp
           name: tmp
       hostNetwork: true
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: ""
       priorityClassName: system-cluster-critical
       securityContext:
         fsGroup: 1337
