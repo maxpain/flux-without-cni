@@ -99,7 +99,7 @@ patches:
       - op: add
         path: /spec/template/spec/tolerations
         value:
-          - key: node.kubernetes.io/not-ready
+          - operator: Exists
 
       - op: add
         path: /spec/template/spec/containers/0/env/-
