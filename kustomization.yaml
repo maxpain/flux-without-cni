@@ -1,160 +1,160 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
   - github.com/fluxcd/flux2/manifests/install?ref=v2.0.1
 
 patches:
-  - target:
-      kind: Deployment
-      name: source-controller
-    patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --health-addr=127.0.0.1:45121
+- target:
+    kind: Deployment
+    name: source-controller
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --health-addr=127.0.0.1:45121
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --metrics-addr=127.0.0.1:45122
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --metrics-addr=127.0.0.1:45122
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --storage-addr=127.0.0.1:45123
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --storage-addr=127.0.0.1:45123
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --storage-adv-addr=127.0.0.1:45123
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --storage-adv-addr=127.0.0.1:45123
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --events-addr=http://127.0.0.1:45423
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --events-addr=http://127.0.0.1:45423
 
-  - target:
-      kind: Deployment
-      name: helm-controller
-    patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --health-addr=127.0.0.1:45221
+- target:
+    kind: Deployment
+    name: helm-controller
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --health-addr=127.0.0.1:45221
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --metrics-addr=127.0.0.1:45222
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --metrics-addr=127.0.0.1:45222
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --events-addr=http://127.0.0.1:45423
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --events-addr=http://127.0.0.1:45423
 
-  - target:
-      kind: Deployment
-      name: kustomize-controller
-    patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --health-addr=127.0.0.1:45321
+- target:
+    kind: Deployment
+    name: kustomize-controller
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --health-addr=127.0.0.1:45321
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --metrics-addr=127.0.0.1:45322
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --metrics-addr=127.0.0.1:45322
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --events-addr=http://127.0.0.1:45423
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --events-addr=http://127.0.0.1:45423
 
-  - target:
-      kind: Deployment
-      name: notification-controller
-    patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --health-addr=127.0.0.1:45421
+- target:
+    kind: Deployment
+    name: notification-controller
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --health-addr=127.0.0.1:45421
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --metrics-addr=127.0.0.1:45422
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --metrics-addr=127.0.0.1:45422
 
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --receiverAddr=127.0.0.1:45423
+    - op: add
+      path: /spec/template/spec/containers/0/args/-
+      value: --receiverAddr=127.0.0.1:45423
 
-  - target:
-      kind: Deployment
-      labelSelector: app.kubernetes.io/part-of=flux
-    patch: |-
-      - op: replace
-        path: /spec/strategy
-        value:
-          type: Recreate
+- target:
+    kind: Deployment
+    labelSelector: app.kubernetes.io/part-of=flux
+  patch: |-
+    - op: replace
+      path: /spec/strategy
+      value:
+        type: Recreate
 
-      - op: replace
-        path: /spec/template/spec/hostNetwork
-        value: true
+    - op: replace
+      path: /spec/template/spec/hostNetwork
+      value: true
 
-      - op: remove
-        path: /spec/template/spec/containers/0/ports
+    - op: remove
+      path: /spec/template/spec/containers/0/ports
 
-      - op: remove
-        path: /spec/template/spec/containers/0/livenessProbe
+    - op: remove
+      path: /spec/template/spec/containers/0/livenessProbe
 
-      - op: remove
-        path: /spec/template/spec/containers/0/readinessProbe
+    - op: remove
+      path: /spec/template/spec/containers/0/readinessProbe
 
-      - op: add
-        path: /spec/template/spec/tolerations
-        value:
-          - operator: Exists
+    - op: add
+      path: /spec/template/spec/tolerations
+      value:
+        - operator: Exists
 
-      - op: add
-        path: /spec/template/spec/containers/0/env/-
-        value:
-          name: KUBERNETES_SERVICE_HOST
-          value: "127.0.0.1"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: KUBERNETES_SERVICE_HOST
+        value: "127.0.0.1"
 
-      - op: add
-        path: /spec/template/spec/containers/0/env/-
-        value:
-          name: KUBERNETES_SERVICE_PORT
-          value: "6443"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: KUBERNETES_SERVICE_PORT
+        value: "6443"
 
-patchesStrategicMerge:
-  - |-
+- patch: |-
     apiVersion: apps/v1
     kind: Deployment
     metadata:
       name: image-reflector-controller
     $patch: delete
-  - |-
+- patch: |-
     apiVersion: apps/v1
     kind: Deployment
     metadata:
       name: image-automation-controller
     $patch: delete
-
-  - |-
+- patch: |-
     apiVersion: v1
     kind: Service
     metadata:
       name: notification-controller
     $patch: delete
-  - |-
+- patch: |-
     apiVersion: v1
     kind: Service
     metadata:
       name: source-controller
     $patch: delete
-  - |-
+- patch: |-
     apiVersion: v1
     kind: Service
     metadata:
       name: webhook-receiver
     $patch: delete
-
-  - |-
+- patch: |-
     apiVersion: v1
     kind: ServiceAccount
     metadata:
       name: image-reflector-controller
     $patch: delete
-  - |-
+- patch: |-
     apiVersion: v1
     kind: ServiceAccount
     metadata:
       name: image-automation-controller
     $patch: delete
+
