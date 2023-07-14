@@ -8740,6 +8740,9 @@ spec:
       tolerations:
       - key: dedicated
         operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/not-ready
+        operator: Exists
       volumes:
       - emptyDir: {}
         name: temp
@@ -8821,6 +8824,9 @@ spec:
       tolerations:
       - key: dedicated
         operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/not-ready
+        operator: Exists
       volumes:
       - emptyDir: {}
         name: temp
@@ -8899,6 +8905,9 @@ spec:
       terminationGracePeriodSeconds: 10
       tolerations:
       - key: dedicated
+        operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/not-ready
         operator: Exists
       volumes:
       - emptyDir: {}
@@ -8988,6 +8997,9 @@ spec:
       terminationGracePeriodSeconds: 10
       tolerations:
       - key: dedicated
+        operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/not-ready
         operator: Exists
       volumes:
       - emptyDir: {}

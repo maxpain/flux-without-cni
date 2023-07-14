@@ -103,6 +103,9 @@ patches:
       value:
         - key: dedicated
           operator: Exists
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoSchedule
 
     - op: add
       path: /spec/template/spec/nodeSelector
