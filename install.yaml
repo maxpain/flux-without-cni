@@ -8738,7 +8738,8 @@ spec:
       serviceAccountName: helm-controller
       terminationGracePeriodSeconds: 600
       tolerations:
-      - operator: Exists
+      - key: dedicated
+        operator: Exists
       volumes:
       - emptyDir: {}
         name: temp
@@ -8818,7 +8819,8 @@ spec:
       serviceAccountName: kustomize-controller
       terminationGracePeriodSeconds: 60
       tolerations:
-      - operator: Exists
+      - key: dedicated
+        operator: Exists
       volumes:
       - emptyDir: {}
         name: temp
@@ -8896,7 +8898,8 @@ spec:
       serviceAccountName: notification-controller
       terminationGracePeriodSeconds: 10
       tolerations:
-      - operator: Exists
+      - key: dedicated
+        operator: Exists
       volumes:
       - emptyDir: {}
         name: temp
@@ -8984,7 +8987,8 @@ spec:
       serviceAccountName: source-controller
       terminationGracePeriodSeconds: 10
       tolerations:
-      - operator: Exists
+      - key: dedicated
+        operator: Exists
       volumes:
       - emptyDir: {}
         name: data
